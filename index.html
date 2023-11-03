@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+    <header>
+
+    </header>
+</head>
+<body>
+    <main>
+<label for="catagoryList">Catagory</label>
+<select name="" id="catagoryList">
+<option value="">Select One</option>
+</select>
+<br>
+<label for="activitiesList">Activities</label>
+<select name="" id="activitiesList">
+    <option value="">Select..</option>
+</select>
+
+<p id="activityDetails"></p>
+<div id="purchaseForm">
+<div class="mb-3">
+    <label for="formTicketQuantity" class="form-label">How Many Tickets?</label>
+    <input type="text" class="form-control" id="formTicketQuantity" placeholder="Ticket Quantity">
+  </div>
+  <div class="mb-3">
+    <label for="formEmailInformation" class="form-label">Email:</label>
+    <input type="text" class="form-control" id="formEmailInformation" placeholder="@Email">
+  </div>
+  <div class="mb-3">
+    <label for="formCreditCardNumber" class="form-label">Credit Card Number:</label>
+    <input type="text" class="form-control" id="formCreditCardNumber" placeholder="Credit Card Number">
+  </div>
+
+  <button type="button" id="submitUserInformationButton">Purchase</button>
+  <button type="button" id="resetUserInformationButton">Reset</button>
+</div>
+
+    </main>
+    <script src="scripts/ActivitiesPage/activities.js"></script>
+</body>
+</html>
