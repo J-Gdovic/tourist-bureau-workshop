@@ -159,7 +159,7 @@ function showActivityDetails() {
       function showActivityForm() {
         
         if (activity.price > 0) {
-            purchaseForm.innerHTML = purchaseForm;
+            //purchaseForm.innerHTML = purchaseForm;
         }
       }
   
