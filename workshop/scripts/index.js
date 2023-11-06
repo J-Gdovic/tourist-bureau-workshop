@@ -112,60 +112,58 @@ let activities = [
     price: 0.0,
   },
 ];
-//bring in htm lelements in to JS
-let catagoryList = document.getElementById("catagoryList");
-let activitiesList = document.getElementById("activitiesList");
-let activityDetails = document.getElementById("activityDetails");
-let purchaseForm = document.getElementById("purchaseForm")
 
+//get html elements
+const categoryList = document.getElementById("categoryList");
+const activityList = document.getElementById("activityList");
 
-
-
-
-//create function for catagoryList
-function displayCategoryList() {
-  for (const category of categories) {
-    //create option for categories
+//create functions to handle events
+function loadCategoryList() {
+  for (const categoryName of categories) {
     let option = document.createElement("option");
-    option.textContent = category;
-
-    catagoryList.appendChild(option);
+    option.textContent = categoryName;
+    option.value = categoryName;
+    categoryList.appendChild(option);
   }
 }
-displayCategoryList();
 
+function loadDefaultOption() {
+  let option = document.createElement("option");
+  option.textContent = "Select...";
+  option.value = "";
+  activityList.appendChild(option);
+}
 
-
-function displayActivitiesList() {
+function loadActivityList() {
+  loadDefaultOption();
   for (const activity of activities) {
     let option = document.createElement("option");
     option.textContent = activity.name;
     option.value = activity.id;
-    activitiesList.appendChild(option);
+    activityList.appendChild(option);
   }
 }
-displayActivitiesList();
 
-function showActivityDetails() {
-  const activityId = activitiesList.value;
+function loadActivityListByCategory(category) {
+  activityList.options.length = 0;
+  loadDefaultOption();
   for (const activity of activities) {
-    if (activity.id == activityId) {
-      activityDetails.innerText = `id: ${activitiesList.value}
-            Name: ${activity.name}
-            Description: ${activity.description}
-            Location: ${activity.location}
-             Price: ${activity.price}`;
-      activityDetails.appendChild(option);
-      function showActivityForm() {
-        
-        if (activity.price > 0) {
-           
-        }
-      }
-  
-
+    if (activity.category == category) {
+      let option = document.createElement("option");
+      option.textContent = activity.name;
+      option.value = activity.id;
+      activityList.appendChild(option);
     }
   }
 }
-activitiesList.onchange = showActivityDetails;
-purchaseForm.onchange = showActivityDetails;
+
+function categoryListChanged() {
+  const categoryName = categoryList.value;
+  loadActivityListByCategory(categoryName);
+}
+
+//wire-up/connect functions to events
+categoryList.onchange = categoryListChanged;
+
+loadCategoryList();
+loadActivityList();
